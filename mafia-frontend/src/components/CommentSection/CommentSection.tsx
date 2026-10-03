@@ -1,4 +1,4 @@
-import { useState, type FormEvent, type KeyboardEvent, useRef, useEffect, useMemo } from 'react'
+import { useState, type FormEvent, type KeyboardEvent, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { CommentEntry } from '../../types/game'
 import { Text } from '../Text'

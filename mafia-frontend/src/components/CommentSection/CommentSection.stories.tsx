@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
+import type { CommentEntry } from '../../types/game'
 import { CommentSection } from './CommentSection'
 
 const meta = {
@@ -14,7 +15,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const CommentSectionWrapper = ({ initialComments = [] }: { initialComments?: any[] }) => {
+const CommentSectionWrapper = ({ initialComments = [] }: { initialComments?: CommentEntry[] }) => {
   const [comments, setComments] = useState(initialComments)
   const [isSending, setIsSending] = useState(false)
 
@@ -46,10 +47,20 @@ const CommentSectionWrapper = ({ initialComments = [] }: { initialComments?: any
 }
 
 export const Empty: Story = {
+  args: {
+    comments: [],
+    onSendComment: async () => true,
+    isSending: false,
+  },
   render: () => <CommentSectionWrapper />,
 }
 
 export const WithComments: Story = {
+  args: {
+    comments: [],
+    onSendComment: async () => true,
+    isSending: false,
+  },
   render: () => (
     <CommentSectionWrapper
       initialComments={[
@@ -83,6 +94,11 @@ export const WithComments: Story = {
 }
 
 export const ManyComments: Story = {
+  args: {
+    comments: [],
+    onSendComment: async () => true,
+    isSending: false,
+  },
   render: () => (
     <CommentSectionWrapper
       initialComments={Array.from({ length: 15 }).map((_, i) => ({

@@ -15,6 +15,9 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+  args: {
+    children: <Text variant="h1">Fixed Header Content</Text>,
+  },
   render: () => (
     <div>
       <FixedHeader>
@@ -33,6 +36,9 @@ export const Default: Story = {
 }
 
 export const WithNavigation: Story = {
+  args: {
+    children: <Text variant="h2">Game Title</Text>,
+  },
   render: () => (
     <div>
       <FixedHeader>

@@ -123,6 +123,9 @@ export const WithShadow: Story = {
 }
 
 export const AllVariants: Story = {
+  args: {
+    children: 'Buttons',
+  },
   render: () => (
     <div className="space-y-4">
       <div className="flex gap-4">

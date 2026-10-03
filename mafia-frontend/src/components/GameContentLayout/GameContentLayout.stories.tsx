@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
 import { GameContentLayout } from './GameContentLayout'
-import type { Game, PlayerRole } from '../types/game'
+import type { Game } from '../../types/game'
 
 const meta = {
   title: 'Components/GameContentLayout',
@@ -76,9 +76,23 @@ const LayoutWrapper = ({ activeTab = 'chat' }: { activeTab?: 'chat' | 'players' 
 }
 
 export const ChatTab: Story = {
+  args: {
+    activeTab: 'chat',
+    comments: [],
+    onSendComment: async () => true,
+    isSending: false,
+    players: [],
+  },
   render: () => <LayoutWrapper activeTab="chat" />,
 }
 
 export const PlayersTab: Story = {
+  args: {
+    activeTab: 'players',
+    comments: [],
+    onSendComment: async () => true,
+    isSending: false,
+    players: [],
+  },
   render: () => <LayoutWrapper activeTab="players" />,
 }

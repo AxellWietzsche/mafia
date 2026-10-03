@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { useState } from 'react'
+import type { GameMessage } from '../../types/game'
 import { MessageSection } from './MessageSection'
 
 const meta = {
@@ -14,7 +15,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const MessageSectionWrapper = ({ initialMessages = [] }: { initialMessages?: any[] }) => {
+const MessageSectionWrapper = ({ initialMessages = [] }: { initialMessages?: GameMessage[] }) => {
   const [messages, setMessages] = useState(initialMessages)
 
   const handleAddMessage = (text: string) => {
@@ -32,10 +33,18 @@ const MessageSectionWrapper = ({ initialMessages = [] }: { initialMessages?: any
 }
 
 export const Empty: Story = {
+  args: {
+    messages: [],
+    onAddMessage: () => {},
+  },
   render: () => <MessageSectionWrapper />,
 }
 
 export const WithMessages: Story = {
+  args: {
+    messages: [],
+    onAddMessage: () => {},
+  },
   render: () => (
     <MessageSectionWrapper
       initialMessages={[

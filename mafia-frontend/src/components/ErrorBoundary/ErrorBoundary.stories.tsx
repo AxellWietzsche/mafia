@@ -23,6 +23,9 @@ const ThrowError = ({ shouldThrow }: { shouldThrow: boolean }) => {
 }
 
 export const Default: Story = {
+  args: {
+    children: <ThrowError shouldThrow={false} />,
+  },
   render: () => (
     <ErrorBoundary>
       <ThrowError shouldThrow={false} />
@@ -31,6 +34,9 @@ export const Default: Story = {
 }
 
 export const WithError: Story = {
+  args: {
+    children: <ThrowError shouldThrow={true} />,
+  },
   render: () => (
     <ErrorBoundary>
       <ThrowError shouldThrow={true} />
@@ -39,6 +45,9 @@ export const WithError: Story = {
 }
 
 export const WithCustomFallback: Story = {
+  args: {
+    children: <ThrowError shouldThrow={true} />,
+  },
   render: () => (
     <ErrorBoundary
       fallback={(error, resetError) => (
