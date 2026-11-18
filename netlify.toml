@@ -1,0 +1,3 @@
+[build]
+  command = "pnpm --filter mafia-frontend run build"
+  publish = "mafia-frontend/dist"
