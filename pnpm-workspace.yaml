@@ -1,4 +1,3 @@
 packages:
   - "mafia-frontend"
   - "mafia-backend"
-  - "my-node-ts"

@@ -30,17 +30,22 @@ function parseCookies(cookieHeader: string | undefined): Record<string, string> 
   return cookies
 }
 
+const corsOrigins = [
+  'http://localhost:5173',
+  'https://admin.socket.io',
+  'http://localhost:3000',
+  'http://192.168.2.47:5173',
+  ...(process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim()).filter(Boolean)
+    : []),
+]
+
 const app = express()
 const httpServer = createServer(app)
 
 app.use(
   cors({
-    origin: [
-      'http://localhost:5173',
-      'https://admin.socket.io',
-      'http://localhost:3000',
-      'http://192.168.2.47:5173',
-    ],
+    origin: corsOrigins,
     credentials: true,
   })
 )
@@ -49,12 +54,7 @@ app.use(userIdentity)
 
 const io = new Server(httpServer, {
   cors: {
-    origin: [
-      'http://localhost:5173',
-      'https://admin.socket.io',
-      'http://localhost:3000',
-      'http://192.168.2.47:5173',
-    ],
+    origin: corsOrigins,
     credentials: true,
     methods: ['GET', 'POST'],
   },
