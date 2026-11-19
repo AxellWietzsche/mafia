@@ -35,6 +35,7 @@ const corsOrigins = [
   'https://admin.socket.io',
   'http://localhost:3000',
   'http://192.168.2.47:5173',
+  'https://axellsmafia.netlify.app',
   ...(process.env.CORS_ORIGIN
     ? process.env.CORS_ORIGIN.split(',').map((origin) => origin.trim()).filter(Boolean)
     : []),
