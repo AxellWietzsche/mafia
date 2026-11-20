@@ -1,9 +1,13 @@
 import { getSocket, addActiveGameSubscription, removeActiveGameSubscription } from './socket'
 import i18n from '../i18n'
 
-/** Current frontend lang for backend log i18n ('en' | 'ar'). */
-function getLogLang(): 'en' | 'ar' {
-  return i18n.language?.toLowerCase().startsWith('ar') ? 'ar' : 'en'
+/** Current frontend lang for backend log i18n ('en' | 'ar' | 'az'). */
+function getLogLang(): 'en' | 'ar' | 'az' {
+  const lang = i18n.language?.toLowerCase()
+  if (lang?.startsWith('az')) {
+    return 'az'
+  }
+  return lang?.startsWith('ar') ? 'ar' : 'en'
 }
 
 // Track subscriptions by gameId with reference counting

@@ -32,10 +32,10 @@ export function removeActiveGameSubscription(gameId: string): void {
 }
 
 /**
- * Notify backend of frontend language for log i18n (en/ar).
+ * Notify backend of frontend language for log i18n (en/ar/az).
  * No-op if socket not yet created.
  */
-export function emitLogLang(lang: 'en' | 'ar'): void {
+export function emitLogLang(lang: 'en' | 'ar' | 'az'): void {
   if (globalSocket) {
     globalSocket.emit('user:set-lang', { lang })
   }
@@ -63,10 +63,12 @@ function setupReconnectionHandlers(socket: Socket): void {
   socket.on('reconnect', (attemptNumber: number) => {
     console.log(`[Reconnect] Socket reconnected (attempt: ${attemptNumber})`)
 
-    const lang = i18n.language?.toLowerCase().startsWith('ar') ? 'ar' : 'en'
-
-    // Notify backend about user reconnection (send lang for log i18n)
-    socket.emit('user:reconnect', { lang })
+    const lang = i18n.language?.toLowerCase()
+    if (lang?.startsWith('az')) {
+      socket.emit('user:reconnect', { lang: 'az' })
+    } else {
+      socket.emit('user:reconnect', { lang: lang?.startsWith('ar') ? 'ar' : 'en' })
+    }
 
     // Re-subscribe to all active game subscriptions
     const activeGames = getActiveGameSubscriptions()

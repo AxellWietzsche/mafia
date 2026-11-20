@@ -12,11 +12,18 @@ interface SettingsModalProps {
 export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const { t, i18n } = useTranslation()
   const { theme, toggleTheme } = useTheme()
-  const isArabic = i18n.language?.startsWith('ar')
+  const currentLang = i18n.language?.toLowerCase()
+  const isArabic = currentLang?.startsWith('ar')
+  const isAzerbaijani = currentLang?.startsWith('az')
 
   const switchLanguage = () => {
-    const next = isArabic ? 'en' : 'ar'
-    i18n.changeLanguage(next)
+    if (isAzerbaijani) {
+      i18n.changeLanguage('en')
+    } else if (isArabic) {
+      i18n.changeLanguage('az')
+    } else {
+      i18n.changeLanguage('ar')
+    }
   }
 
   return (
@@ -56,16 +63,16 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           <div className="flex items-center gap-3 p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
             <div className="flex-1">
               <Text variant="p" weight="medium" className="mb-1">
-                {isArabic ? t('settings.arabic') : t('settings.english')}
+                {isAzerbaijani ? t('settings.azerbaijani') : isArabic ? t('settings.arabic') : t('settings.english')}
               </Text>
               <Text variant="p" color="secondary" size="sm">
                 {t('settings.currentlyUsingLanguage', {
-                  lang: isArabic ? t('settings.arabic') : t('settings.english'),
+                  lang: isAzerbaijani ? t('settings.azerbaijani') : isArabic ? t('settings.arabic') : t('settings.english'),
                 })}
               </Text>
             </div>
             <Button onClick={switchLanguage} variant="primary">
-              {isArabic ? t('settings.switchToEnglish') : t('settings.switchToArabic')}
+              {isAzerbaijani ? t('settings.switchToEnglish') : isArabic ? t('settings.switchToAzerbaijani') : t('settings.switchToArabic')}
             </Button>
           </div>
         </div>

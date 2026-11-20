@@ -1,9 +1,9 @@
 /**
- * Backend log message i18n (EN/AR).
+ * Backend log message i18n (EN/AR/AZ).
  * Used when sending game logs to the frontend; message is translated per socket lang.
  */
 
-export type LogLang = 'en' | 'ar'
+export type LogLang = 'en' | 'ar' | 'az'
 
 const EN: Record<string, string> = {
   join: '"{{nickname}}" joined the game',
@@ -324,7 +324,160 @@ const AR: Record<string, string> = {
     '⚖️ [إعدام] "{{nickname}}" كان الطبيب! ألقى القرويون شريان حياتهم. 🚑',
 }
 
-const MAP: Record<LogLang, Record<string, string>> = { en: EN, ar: AR }
+const AZ: Record<string, string> = {
+  join: '"{{nickname}}" oyununa qoşuldu',
+  leave: '"{{nickname}}" oyundan ayrıldı',
+  leaveHostCancel: '"{{nickname}}" (host) oyundan ayrıldı. Oyun ləğv edildi.',
+  gameStarted: 'Oyun başladı! Rollar təyin edildi. {{mafiaCount}} Mafiya, {{doctorCount}} Həkim, {{villagerCount}} Kəndli.',
+  day1Begins: '1-ci gün başlayır. Müzakirə edin və şübhəli oyunçunu edam etmək üçün səs verin.',
+  dayBegins: '{{dayNumber}}-ci gün başlayır. Müzakirə edin və şübhəli oyunçunu edam etmək üçün səs verin.',
+  nightBegins: '{{nightNumber}}-ci gecə başlayır. Mafiya, hədəfinizi seçin. Həkim, sağlatmaq üçün kimini seçin.',
+  villagersWin: '🎉 Kəndlilər qalib gəldi! Bütün mafiya məhv edildi.',
+  mafiaWinsControl: '🎉 Mafiya qalib gəldi! Onlar şəhəri idarə edir.',
+  mafiaWinsNoOne: '🎉 Mafiya qalib gəldi! Artıq heç kim onları dayandırmağa qadir deyil.',
+  mafiaWinsTonight: "🎉 Mafiya qalib gəldi! Onlar bu gecə qalan kəndliləri məhv edəcək.",
+  nightNoTarget: 'Gecə bitdi. Mafiya tərəfindən heç kəs hədəf alınmadı.',
+  dayNoLynch: 'Gün bitdi. Heç kəs edam edilmədi.',
+  heal: 'Həkim "{{nickname}}"-ı mafiyanın hücumundan xilas etdi!',
+
+  'mafiaKill.0':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" qapalı qapılar arxasında qısa bir söhbətdən sonra yox oldu. 🚪',
+  'mafiaKill.1':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" imza atdı, əlbəttə ki, oxumadı. 📝💀',
+  'mafiaKill.2':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" başqaları üçün nümunə oldu. 📉',
+  'mafiaKill.3':
+    '"{{nickname}}" "ailə görüşü" nə demək olduğunu yanlış başa düşdü. 👨‍👩‍👧‍👦',
+  'mafiaKill.4':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" artıq davamlı bir araşdırma üzərindədir. 🕵️‍♂️',
+  'mafiaKill.5':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" sükut saxlamaq barədə bələdçini unutdu. 🤐',
+  'mafiaKill.6':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" mübahisə qazandı. Qalan hər şeyi itirdi. 🥀',
+  'mafiaKill.7':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" maaş siyahısından çıxarıldı. Daimi. 💼',
+  'mafiaKill.8':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" çox sürətli öyrəndi. 🧠',
+  'mafiaKill.9':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" məsuliyyəti götürdü. Mafiya qalanı həll etdi. 🪦',
+  'mafiaKill.10':
+    '"{{nickname}}" daha çox problem yaratmayacaq. ✔️',
+  'mafiaKill.11':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" artıq mesajlar qəbul etməyəcək. 📵',
+  'mafiaKill.12':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" personaj arxasını bitirdi. 🎭',
+  'mafiaKill.13':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" sonuncu dəfə güləmsinə görə başını salladı. Sonra sükut. 😶',
+  'mafiaKill.14':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" sədaqət testini uğursuz keçdi. ❌',
+  'mafiaKill.15':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" hekayədən çıxarıldı. ✂️',
+  'mafiaKill.16':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" niyə biz ikidən bir şey sormadığımızı anladı. 🔫',
+  'mafiaKill.17':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" indi bir xəbərdarlıq hekayəsidir. 📖',
+  'mafiaKill.18':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" qısa bir yol tutdu. Bu son idi. 🛣️',
+  'mafiaKill.19':
+    '🔫 [Mafiya Öldürməsi] "{{nickname}}" həll edildi. 🧤',
+}
+
+const AZ_LYNCH = {
+  'lynchVillager.0':
+    '⚖️ [Edam Edildi] "{{nickname}}" günahsız idi. Kəndlik bu hadisəni unutmağa çalışacaq. 😬',
+  'lynchVillager.1':
+    '⚖️ [Edam Edildi] "{{nickname}}" mafiya deyildi. Avtobioz sükutu izləyir... 😶',
+  'lynchVillager.2':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.3':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.4':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.5':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.6':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.7':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.8':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.9':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.10':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.11':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.12':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.13':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchVillager.14':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.0':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.1':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.2':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.3':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.4':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.5':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.6':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.7':
+    '⚖️ [Edam Edildi] "{{nickname}}" demokratiya üçün öldü. Demokratiya indi pis hiss edir. 🗳️💀',
+  'lynchMafia.8':
+    '🎉 [Edam Edildi] "{{nickname}}" bütün oyun boyu mafiya idi! Kəndlilər qələbə qazandı! 🎉',
+  'lynchMafia.9':
+    '⚖️ [Edam Edildi] "{{nickname}}" tutuldu. Mafiya sayı azalır. 📉',
+  'lynchMafia.10':
+    '⚖️ [Edam Edildi] "{{nickname}}" səhvi vardı. Kəndlilər onu tutdu. 🕵️',
+  'lynchMafia.11':
+    '⚖️ [Edam Edildi] "{{nickname}}" iki cəbhədə oynadı. Kəndlilər bir tərəfi seçdi. ⚔️',
+  'lynchMafia.12':
+    '⚖️ [Edam Edildi] "{{nickname}}" özünü təhlükəsiz hiss etdi. Yanlışdı. ❌',
+  'lynchMafia.13':
+    '⚖️ [Edam Edildi] "{{nickname}}" çox bəlli idi. Bağışlayın. 😬',
+  'lynchMafia.14':
+    '🔍 [Edam Edildi] "{{nickname}}" bütün oyun boyu mafiya idi! Kəndlilərin araşdırması qəbul oldu. 🔍',
+  'lynchDoctor.0':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Kəndlilər onların yeganə müdafiəsini itirdilər. 😱',
+  'lynchDoctor.1':
+    '⚖️ [Edam Edildi] "{{nickname}}" insanları xilas etməyə çalışırdı. Kəndlilər nəzərə almadı. 💔',
+  'lynchDoctor.2':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Kim bu dəfə sizi xilas edəcək? 🏥',
+  'lynchDoctor.3':
+    '⚖️ [Edam Edildi] "{{nickname}}" insanları müalicə edirdi. Kəndlilər həkimini edam etdi. 🤦',
+  'lynchDoctor.4':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Mafiya qeydlər edir. 🎉',
+  'lynchDoctor.5':
+    '⚖️ [Edam Edildi] "{{nickname}}" hər gecə insanları xilas etdi. Kəndlilər yininə onu öldürdü. 😢',
+  'lynchDoctor.6':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Bu səbəbdən biz ən yaxşı şeyləri layiqliyimizə görə almayacağıq. 😤',
+  'lynchDoctor.7':
+    '⚖️ [Edam Edildi] "{{nickname}}" ədalətli insanları qoruyurdu. Kəndlilər nəzərə almadı. 🛡️',
+  'lynchDoctor.8':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Kəndlilər mafiyanın işini asanlaşdırdı. 😈',
+  'lynchDoctor.9':
+    '⚖️ [Edam Edildi] "{{nickname}}" müalicə edirdi. Kəndlilər zorakılığı seçdi. ⚔️',
+  'lynchDoctor.10':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Kəndliləri öz xətanəsi üçün tənqid etməlidir. 🤷',
+  'lynchDoctor.11':
+    '⚖️ [Edam Edildi] "{{nickname}}" insanları xilas edirdi. Kəndlilər onun həyatını bitirmək üçün səs verdi. 💉',
+  'lynchDoctor.12':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Mafiya təşəkkür edir. 🙏',
+  'lynchDoctor.13':
+    '⚖️ [Edam Edildi] "{{nickname}}" kəndlilərin yeganə ümidi idi. Bitdi. 🌑',
+  'lynchDoctor.14':
+    '⚖️ [Edam Edildi] "{{nickname}}" həkim idi! Kəndlilər öz həyat damarlarını atdılar. 🚑',
+}
+
+Object.assign(AZ, AZ_LYNCH)
+
+const MAP: Record<LogLang, Record<string, string>> = { en: EN, ar: AR, az: AZ }
 
 function interpolate(template: string, params: Record<string, string | number>): string {
   let out = template
@@ -361,7 +514,11 @@ export function translateLog(
   return log.message
 }
 
-/** Normalize client lang to LogLang ('en' | 'ar'). */
+/** Normalize client lang to LogLang ('en' | 'ar' | 'az'). */
 export function normalizeLogLang(lang?: string): LogLang {
-  return lang?.toLowerCase().startsWith('ar') ? 'ar' : 'en'
+  const normalized = lang?.toLowerCase()
+  if (normalized?.startsWith('az')) {
+    return 'az'
+  }
+  return normalized?.startsWith('ar') ? 'ar' : 'en'
 }
