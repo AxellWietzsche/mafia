@@ -15,7 +15,7 @@ declare module 'socket.io' {
   interface Socket {
     data: {
       userId?: string
-      /** Frontend language for log i18n ('en' | 'ar') */
+      /** Frontend language for log i18n ('en' | 'ar' | 'az') */
       lang?: string
     }
   }

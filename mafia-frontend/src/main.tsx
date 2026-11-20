@@ -88,7 +88,12 @@ declare module '@tanstack/react-router' {
 
 // Notify backend when frontend language changes (for log i18n)
 i18n.on('languageChanged', (lng) => {
-  emitLogLang(lng?.toLowerCase().startsWith('ar') ? 'ar' : 'en')
+  const normalized = lng?.toLowerCase()
+  if (normalized?.startsWith('az')) {
+    emitLogLang('az')
+  } else {
+    emitLogLang(normalized?.startsWith('ar') ? 'ar' : 'en')
+  }
 })
 
 const rootElement = document.getElementById('root')!
