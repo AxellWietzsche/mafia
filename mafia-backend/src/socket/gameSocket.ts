@@ -827,7 +827,7 @@ export class GameSocketHandler {
 
   /**
    * Handle user reconnect - restore game subscriptions and send current state.
-   * Optional data.lang sets socket lang for log i18n (en/ar).
+   * Optional data.lang sets socket lang for log i18n (en/ar/az).
    */
   handleUserReconnect(socket: Socket, data?: { lang?: string }): void {
     const userId = socket.data.userId
