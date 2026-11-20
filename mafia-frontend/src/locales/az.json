@@ -1,0 +1,176 @@
+{
+  "common": {
+    "mafia": "Mafiya",
+    "settings": "Ayarlar",
+    "close": "Bağla",
+    "cancel": "İmtina et",
+    "submit": "Təsdiq et",
+    "submitting": "Təsdiqlənir...",
+    "unknown": "Tanınmayan",
+    "you": "(Siz)",
+    "youLower": "(siz)",
+    "host": "(host)",
+    "vote": "Səsvermə",
+    "voted": "Səs verildi",
+    "dead": "Ölü",
+    "join": "Qoşul",
+    "send": "Göndər",
+    "sending": "Göndərilir...",
+    "shuffle": "Qarışdır",
+    "tryAgain": "Təkrar cəhd et",
+    "day": "Gün",
+    "night": "Gecə"
+  },
+  "errors": {
+    "failedToLoadGames": "Oyunlar yüklənə bilmədi",
+    "unexpectedErrorLoadingGames": "Oyunlar yüklənərkən təsadüfi xəta baş verdi",
+    "failedToFetchGames": "Oyunlar əldə edilə bilmədi",
+    "socketNotInitialized": "Soket təyin edilməyib",
+    "failedToCreateGame": "Oyun yaradıla bilmədi",
+    "failedToJoinGame": "Oyunaya qoşula bilmədi",
+    "failedToStartGame": "Oyun başlaya bilmədi",
+    "failedToVote": "Səsvermə baş vermədi"
+  },
+  "loading": {
+    "mafiaGame": "Mafiya Oyunu",
+    "loadingGames": "Oyunlar yüklənir..."
+  },
+  "lobby": {
+    "welcome": "Xoş gəldiniz!",
+    "createNewGame": "Yeni oyun yaradın",
+    "creatingGame": "Yaradılır...",
+    "createGame": "Oyun yaradın",
+    "settingsAria": "Ayarlar",
+    "backToLobby": "Lobiyə qayıt"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "theme": "Tema",
+    "themeDescription": "Açıq və qaranlıq rejimlər arası keçid edin",
+    "lightMode": "Açıq Rejim",
+    "darkMode": "Qaranlıq Rejim",
+    "currentlyUsingTheme": "Hazırda {{theme}} teması istifadə olunur",
+    "switchToLight": "Açıq rejimə keç",
+    "switchToDark": "Qaranlıq rejimə keç",
+    "language": "Dil",
+    "languageDescription": "Sizin sevimli dilinizi seçin",
+    "currentlyUsingLanguage": "Hazırda {{lang}} istifadə olunur",
+    "english": "English",
+    "arabic": "العربية",
+    "azerbaijani": "Azərbaycan",
+    "switchToEnglish": "English",
+    "switchToArabic": "العربية",
+    "switchToAzerbaijani": "Azərbaycan"
+  },
+  "gameInstructions": {
+    "title": "Oyun Təlimatları",
+    "howToPlay": "Necə Oynanır",
+    "intro": "Mafiya — strategiya və təhlil oyunudur. Oyunçular gizli şəkildə Mafiya üzvləri, Həkim və ya Kəndli olaraq rol təyin edilir. Mafiya şəhər əhalisini məhv etməyə çalışır, kəndlilər isə mafiyanı müəyyən etməyə və məhvetməyə çalışır.",
+    "roles": "Rolər",
+    "mafiaRole": "Mafiya:",
+    "mafiaDesc": "Gecə fazasında oyunçunu məhv etmək üçün səs verin. Bütün kəndliləri və həkimi məhv etmək üçün birlikdə çalışın.",
+    "doctorRole": "Həkim:",
+    "doctorDesc": "Gecə fazasında oyunçunu sağaltmaq üçün səs verin. Mafiya hücum etdiyi oyunçunu sağlatdıqsa, onu ölümündən xilas edirsiniz. Kimliklərinizi gizli saxlayın!",
+    "villagerRole": "Kəndli:",
+    "villagerDesc": "Gündüz fazasında şübhəli mafiya üzvünü edam etmək üçün səs verin. Mafiyanı müəyyən etmək üçün müzakirə və təhlil edin.",
+    "roleDistribution": "Rol Təqsmatı:",
+    "roleDistributionDesc": "7+ oyunçu üçün: 2 Mafiya, 1 Həkim, qalanlar Kəndlidir. Kiçik oyunlar üçün: 1 Mafiya, 1 Həkim, qalanlar Kəndlidir.",
+    "gamePhases": "Oyun Fazaları",
+    "dayPhase": "Gündüz Fazası (60 saniyə):",
+    "dayPhaseDesc": "Bütün sağ oyunçular müzakirə edir və şübhəli oyunçunu edam etmək üçün səs verir. ən çox səsi alan oyunçu çıxarılır. Fazada istənilən zaman səsini dəyişə bilərsiniz.",
+    "nightPhase": "Gecə Fazası (60 saniyə):",
+    "nightPhaseDesc": "Mafiya üzvləri oyunçunu öldürmək üçün səs verir (əksərlik səsi qərar verir). Həkim sağaltmaq üçün səs verir. Mafiya hücum etdiyi oyunçunu sağlatdıqsa, o oyunçu xilas olunur. Kəndlilər gecə əmələ keçirə bilməzlər.",
+    "phaseTransition": "60 saniyədən sonra fazalar avtomatik keçir. Oyun gün və gecə arasında dəyişir, qədər tərəf qalib gələnə qədər.",
+    "votingRules": "Səsvermə Qaydaları",
+    "votingRule1": "Yalnız sağ oyunçular səs verə və şərh edə bilər",
+    "votingRule2": "Səslər əksərliklə hesablanır — ən çox səsi alan oyunçu seçilir",
+    "votingRule3": "Fazada istənilən zaman səsini dəyişə bilərsiniz",
+    "votingRule4": "Səs verməyərək və ya səsini silərək imtina edə bilərsiniz",
+    "winningConditions": "Qaliblik Şərtləri",
+    "villagersWin": "Kəndlilər Qalib Olur:",
+    "villagersWinDesc": "Bütün Mafiya üzvləri məhv edilir",
+    "mafiaWins": "Mafiya Qalib Olur:",
+    "mafiaWinsDesc1": "Mafiya sayı digər oyunçulara bərabərdir və ya onlardan çoxdur (kəndlilər + həkim)",
+    "mafiaWinsDesc2": "Həkim qalmadı və Mafiya sayı kəndlilərə bərabərdir və ya onlardan çoxdur"
+  },
+  "gamesList": {
+    "creatingGame": "Oyun yaradılır...",
+    "createNewGame": "Yeni oyun yaradın",
+    "availableGames": "Mövcud Oyunlar",
+    "noGames": "Mövcud oyun yoxdur. Başlamaq üçün birini yaradın!"
+  },
+  "nicknameForm": {
+    "enterNickname": "Lakinizi daxil edin",
+    "nicknamePlaceholder": "Lakiniz",
+    "chooseAvatar": "Avatarınızı seçin",
+    "selectedAvatar": "Seçilmiş avatar",
+    "selectAvatar": "Avatar seçin",
+    "avatarOption": "Avatar seçimi"
+  },
+  "gameNameForm": {
+    "enterGameName": "Oyun adını daxil edin",
+    "gameNamePlaceholder": "Oyun adı"
+  },
+  "gameCard": {
+    "yourGame": "Sizin Oyununuz",
+    "joined": "Qoşuldu",
+    "host": "Host: {{name}}",
+    "players": "Oyunçular:",
+    "inGame": "Oyundadır",
+    "justNow": "Dəhşətli",
+    "minsAgo": "{{count}} dəqiqə əvvəl",
+    "hoursAgo": "{{count}} saat əvvəl",
+    "daysAgo": "{{count}} gün əvvəl"
+  },
+  "onlinePlayers": {
+    "title": "Onlayn Oyunçular ({{count}})",
+    "loading": "Oyunçular yüklənir...",
+    "noPlayers": "Onlayn oyunçu yoxdur"
+  },
+  "game": {
+    "startGame": "Oyunu Başlat",
+    "gameLog": "Oyun Logu",
+    "noLogEntries": "Hələ heç bir giriş yoxdur. Oyun hadisələri burada görünəcək.",
+    "hostedBy": "Host edən",
+    "chat": "Söhbət",
+    "players": "Oyunçular",
+    "comments": "Şərhlər",
+    "commentPlaceholder": "Şərh yazın... (Enter göndərmək üçün, Shift+Enter yeni sətir üçün)",
+    "charactersCount": "{{count}}/500 simvol",
+    "noComments": "Hələ şərh yoxdur. Birincinin şərh etmək!",
+    "noPlayersYet": "Hələ oyunçu yoxdur.",
+    "gameOver": "Oyun bitdi!",
+    "villagersWon": "Kəndlilər qalib gəldi!",
+    "mafiaWon": "Mafiya qalib gəldi!",
+    "gameStarted": "Oyun başladı!"
+  },
+  "status": {
+    "waiting": "Gözləyir",
+    "inProgress": "Davam edir",
+    "finished": "Bitib",
+    "cancelled": "Ləğv edildi"
+  },
+  "roles": {
+    "mafia": "Mafiya",
+    "doctor": "Həkim",
+    "villager": "Kəndli",
+    "yourRole": "Rolunuz: {{role}}",
+    "mafiaDescription": "Siz Mafiyanın bir üzvüsünüz. Gecə kəndliləri məhv etmək üçün birlikdə səs verin.",
+    "doctorDescription": "Siz Həkimsiniz. Gecə həkimləri mafiya hücumlarından sağlatmaqla xilas edin.",
+    "villagerDescription": "Siz Kəndlisiniz. Gündüz mafiyanı müəyyən etmək və edam etmək üçün başqaları ilə birlikdə çalışın."
+  },
+  "voting": {
+    "voteToLynch": "Edam üçün səs verin",
+    "voteToKill": "Öldürmək üçün səs verin",
+    "chooseToHeal": "Sağaltmaq üçün seçin",
+    "chooseWhoToLynch": "Edam edilməsi üçün kimini seçin:",
+    "chooseWhoToKill": "Öldürmək üçün kimini seçin:",
+    "chooseWhoToHeal": "Sağaltmaq üçün kimini seçin:",
+    "chooseTarget": "Hədəfi seçin:",
+    "abstain": "İmtina et (səs yoxdur)",
+    "updateVote": "Səsi yenilə"
+  },
+  "modal": {
+    "closeAria": "Bağla"
+  }
+}
