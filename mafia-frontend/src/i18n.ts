@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import en from './locales/en.json'
 import ar from './locales/ar.json'
+import az from './locales/az.json'
 
 const STORAGE_KEY = 'i18nextLng'
 
@@ -13,15 +14,15 @@ function applyRtl(lng: string) {
     root.lang = 'ar'
   } else {
     root.dir = 'ltr'
-    root.lang = 'en'
+    root.lang = lng.startsWith('az') ? 'az' : 'en'
   }
 }
 
 // Apply RTL immediately from localStorage on load (before i18n init).
 // This fixes RTL persisting on refresh; init/initialized can run before the detector sets language.
 const storedLng = typeof localStorage !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null
-if (storedLng && storedLng.startsWith('ar')) {
-  applyRtl('ar')
+if (storedLng && (storedLng.startsWith('ar') || storedLng.startsWith('az'))) {
+  applyRtl(storedLng)
 } else {
   applyRtl('en')
 }
@@ -33,9 +34,10 @@ i18n
     resources: {
       en: { translation: en },
       ar: { translation: ar },
+      az: { translation: az },
     },
     fallbackLng: 'en',
-    supportedLngs: ['en', 'ar'],
+    supportedLngs: ['en', 'ar', 'az'],
     detection: {
       order: ['localStorage', 'navigator'],
       lookupLocalStorage: STORAGE_KEY,
@@ -51,7 +53,7 @@ i18n.on('languageChanged', (lng) => {
 })
 
 i18n.on('initialized', () => {
-  applyRtl(i18n.language?.startsWith('ar') ? 'ar' : 'en')
+  applyRtl(i18n.language?.startsWith('ar') || i18n.language?.startsWith('az') ? i18n.language : 'en')
 })
 
 export default i18n
